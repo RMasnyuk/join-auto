@@ -1,0 +1,54 @@
+.filter-wrapper {
+  background-color: #ffffff;
+  padding: 40px;
+  margin-top: 20px;
+  box-shadow: 0 2px 13px 3px rgba(0, 0, 0, .07);
+  border-left: 2px solid var(--dark-green);
+  border-radius: 2px;
+
+  ::ng-deep {
+    .autocomplete-container {
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: none;
+      box-shadow: none;
+
+      input {
+        background-color: var(--bright);
+        color: var(--dark);
+
+        &:focus {
+          border-bottom: 2px solid var(--dark-green);
+          box-shadow: 0 2px 13px 3px rgba(0, 0, 0, 0.07);
+          transition: all 0.1s ease;
+        }
+      }
+    }
+  }
+}
+
+.title {
+  margin-top: 50px;
+  font-size: 32px;
+  font-weight: 400;
+  padding-left: 15px;
+  color: var(--dark);
+}
+
+.products-container {
+  padding-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    padding-left: 0;
+    font-size: 28px;
+    text-align: center;
+  }
+}
+
+.recently-added {
+  margin-top: 50px;
+  padding-bottom: 50px;
+  background-color: #eceef0;
+}

@@ -1,0 +1,10 @@
+.section {
+  padding: 50px 0; }
+  .section .title {
+    font-size: 32px;
+    font-weight: 400;
+    padding-left: 15px;
+    color: var(--dark);
+    margin-bottom: 20px; }
+
+/*# sourceMappingURL=order-list.component.css.map */

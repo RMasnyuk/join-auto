@@ -1,0 +1,35 @@
+<div class="header" [ngClass]="{'scrolled': isScrolledBottom}">
+  <div class="logo-wrapper">
+    <a class="home-link" routerLink="/">
+      <h1 class="logo-title">Join<span>Auto</span></h1>
+    </a>
+  </div>
+  <div class="action-wrapper d-none d-lg-flex">
+    <a *ngFor="let action of actions" class="button hover-effect" [routerLink]="action.linkTo">{{action.title}}</a>
+  </div>
+  <a class="login-wrapper d-none d-lg-flex" routerLink="/">
+    <a routerLink="/login" class="login">Увійти</a>
+    <!--    <img src="../../assets/images/user.svg" alt="login">-->
+  </a>
+  <div class="side-menu-btn d-block d-lg-none">
+    <button class="menu-btn" [ngClass]="{'active': isMenuActive}" (click)="openMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</div>
+
+<div class="mobile-list" [ngClass]="{'active': isMenuActive}">
+  <div class="action-wrapper">
+    <a routerLink="/vehicle-list" class="side-menu-action">Купити авто</a>
+    <a routerLink="" class="side-menu-action">Продати авто</a>
+    <a routerLink="" class="side-menu-action">Замовити авто</a>
+    <a class="login-wrapper-mobile d-lg-flex" routerLink="/">
+      <span>
+     <svg-icon [svgStyle]="{'width': '25', 'height': '25', 'stroke': '#343A40'}"
+               src="../../assets/images/user.svg"></svg-icon>
+      <a routerLink="/login" class="login">Увійти</a>
+        </span>
+    </a>
+  </div>
+</div>
+

@@ -1,0 +1,60 @@
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="image-container">
+          <div class="image-wrapper">
+            <p class="photo">
+              <svg-icon src="../../../assets/images/user.svg"></svg-icon>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="user-info-wrapper">
+          <p class="user-options">
+            <svg-icon src="../../../assets/images/user.svg"></svg-icon>
+            <span class="font-big">
+              {{data.name}}
+            </span>
+          </p>
+          <p class="user-options">
+            <svg-icon src="../../../assets/images/mail.svg"></svg-icon>
+            <a href="mailto: {{'joinauto2020@gmail.com'}}" title="{{'joinauto2020@gmail.com'}}">
+                {{data.email}}
+            </a>
+          </p>
+          <p class="user-options">
+            <svg-icon src="../../../assets/images/phone.svg"></svg-icon>
+            <a href="tel: {{'+38 098 22 45 697'}}" title="{{'+38 098 22 45 697'}}">
+                {{data.phoneNumber}}
+            </a>
+          </p>
+          <p class="user-options">
+            <svg-icon src="../../../assets/images/map-pin.svg"></svg-icon>
+              {{data.location}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="color-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="header">
+          Список товарів
+        </h2>
+        <div class="products-wrapper">
+          <div class="row">
+            <div *ngFor="let product of [1,2]" class="col-lg-3 mb-4 products-container">
+              <app-product-card></app-product-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

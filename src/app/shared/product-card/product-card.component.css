@@ -1,0 +1,68 @@
+@charset "UTF-8";
+.product {
+  text-decoration: none;
+  color: inherit;
+  display: block; }
+
+.product-wrapper {
+  box-shadow: 0 2px 13px 3px rgba(0, 0, 0, 0.07);
+  background-color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px; }
+  .product-wrapper:hover {
+    transform: scale(1.02); }
+  .product-wrapper .img-wrapper {
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    border-radius: 2px; }
+    .product-wrapper .img-wrapper .image-background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: block;
+      background-image: url("https://cdn.riastatic.com/photosnew/auto/photo/bmw_328__316793967b.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center; }
+    .product-wrapper .img-wrapper.show-hot:after {
+      content: 'Топ';
+      font-size: 12px;
+      position: absolute;
+      height: 15px;
+      width: 35px;
+      background-color: #ff5722;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      border-bottom-right-radius: 2px; }
+  .product-wrapper .name {
+    font-weight: 700;
+    padding: 10px 10px 0;
+    color: var(--dark); }
+  .product-wrapper .info {
+    color: var(--green);
+    font-weight: 700;
+    padding: 5px 10px 15px; }
+    .product-wrapper .info .mileage {
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 14px;
+      position: relative;
+      margin-left: 10px; }
+      .product-wrapper .info .mileage:after {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 40%;
+        display: block;
+        height: 3px;
+        width: 3px;
+        background-color: var(--dark); }
+
+/*# sourceMappingURL=product-card.component.css.map */

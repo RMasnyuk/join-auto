@@ -1,0 +1,180 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="title">Фільтр</h1>
+    </div>
+    <div class="col-12 col-lg-8">
+      <div class="filter-wrapper">
+        <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 col-sm-7 col-lg-6">
+              <div class="select-type">
+                <ng-autocomplete
+                  formControlName="type"
+                  placeHolder="Тип"
+                  [data]="typeData"
+                  [searchKeyword]="keywords"
+                  [itemTemplate]="typeTemplate"
+                  [notFoundTemplate]="notFoundTypeTemplate">
+                </ng-autocomplete>
+
+                <ng-template #typeTemplate let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundTypeTemplate>
+                  <div [innerHTML]="'Не знайдено'"></div>
+                </ng-template>
+              </div>
+              <div class="select-mark">
+                <ng-autocomplete
+                  formControlName="mark"
+                  placeHolder="Марка"
+                  [data]="markData"
+                  [searchKeyword]="keywords"
+                  [itemTemplate]="markTemplate"
+                  [notFoundTemplate]="notFoundMarkTemplate">
+                </ng-autocomplete>
+
+                <ng-template #markTemplate let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundMarkTemplate>
+                  <div [innerHTML]="'Не знайдено'"></div>
+                </ng-template>
+              </div>
+
+              <div class="select-model">
+                <ng-autocomplete
+                  formControlName="model"
+                  placeHolder="Модель"
+                  [data]="modelData"
+                  [searchKeyword]="keywords"
+                  [itemTemplate]="modelTemplate"
+                  [notFoundTemplate]="notFoundModelTemplate">
+                </ng-autocomplete>
+
+                <ng-template #modelTemplate let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundModelTemplate>
+                  <div [innerHTML]="'Не знайдено'"></div>
+                </ng-template>
+              </div>
+            </div>
+            <div class="col-12 col-sm-7 col-lg-6">
+              <div class="select-region">
+                <ng-autocomplete
+                  formControlName="region"
+                  placeHolder="Регіон"
+                  [data]="[1,2,3]"
+                  [searchKeyword]="keywords"
+                  [itemTemplate]="regionTemplate"
+                  [notFoundTemplate]="notFoundRegionTemplate">
+                </ng-autocomplete>
+
+                <ng-template #regionTemplate let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundRegionTemplate>
+                  <div [innerHTML]="'Не знайдено'"></div>
+                </ng-template>
+              </div>
+              <div class="row">
+                <div class="col-6 pr-1">
+                  <ng-autocomplete
+                    formControlName="yearFrom"
+                    placeHolder="Рік від"
+                    [data]="yearFrom"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="yearFromTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #yearFromTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+                </div>
+                <div class="col-6 pl-1">
+                  <ng-autocomplete
+                    formControlName="yearTo"
+                    placeHolder="Рік до"
+                    [data]="[1,2,3]"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="yearToTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #yearToTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 pr-1">
+                  <ng-autocomplete
+                    formControlName="priceFrom"
+                    placeHolder="Ціна від $"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="priceFromTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #priceFromTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+                </div>
+                <div class="col-6 pl-1">
+                  <ng-autocomplete
+                    formControlName="priceTo"
+                    placeHolder="Ціна до $"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="priceToTemplate"
+                  >
+                  </ng-autocomplete>
+
+                  <ng-template #priceToTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+                </div>
+              </div>
+              <div class="button-wrapper d-flex justify-content-end">
+                <button class="button btn-alternative mt-4 w-50">Пошук</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="recently-added">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="title">Недавно додані</h1>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <div *ngFor="let product of [1,2,4,5,4,4,1,2]" class="products-container col-sm-6 col-md-4 col-xl-3 mb-4">
+            <app-product-card></app-product-card>
+          </div>
+          <div class="col-12" id="collapseExample" [ngbCollapse]="!isCollapsed">
+            <div class="row">
+              <div *ngFor="let product of [1,2,4,5,4,4,1,2]" class="products-container col-sm-6 col-md-4 col-xl-3 mb-4">
+                <app-product-card></app-product-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <button *ngIf="!isCollapsed" class="button btn-alternative mt-4"
+                (click)="isCollapsed = !isCollapsed"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+          Показати більше...
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

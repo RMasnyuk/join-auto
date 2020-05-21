@@ -1,0 +1,26 @@
+<section class="login-section">
+  <div class="login-form-wrapper">
+    <h1 class="logo-title">Join<span>Auto</span></h1>
+    <h1 class="title">Увійти</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-input-wrapper">
+        <input type="text" class="form-input" formControlName="email" placeholder="Ел.Пошта" (input)="serverErrors = {}">
+        <div *ngIf="form.get('email').invalid && form.get('email').touched" class="error-block">
+          <p *ngIf="form.get('email').errors.email" class="error">Введіть коректний email</p>
+          <p *ngIf="form.get('email').errors.required"  class="error">Введіть email</p>
+        </div>
+        <div *ngIf="serverErrors.email" class="error-block">
+          <p class="error">{{serverErrors.email}}</p>
+        </div>
+      </div>
+      <div class="form-input-wrapper">
+        <input type="password" class="form-input" formControlName="password" placeholder="Пароль">
+        <div *ngIf="form.get('password').invalid && form.get('password').touched" class="error-block">
+          <p *ngIf="form.get('password').errors.required"  class="error">Введіть пароль</p>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Увійти</button>
+    </form>
+    <p class="bottom-hint">Немає аккаунта? <a routerLink="/sign-up">Зареєструватися</a></p>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+<section class="login-section">
+  <div class="login-form-wrapper">
+    <h1 class="logo-title">Join<span>Auto</span></h1>
+    <h1 class="title">Зареєструватися</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-input-wrapper">
+        <input type="text" class="form-input" formControlName="name" placeholder="Ім'я">
+        <div *ngIf="form.get('name').invalid && form.get('name').touched" class="error-block">
+          <p *ngIf="form.get('name').errors.required"  class="error">Введіть ім'я</p>
+        </div>
+        <div *ngIf="serverErrors.user_name" class="error-block">
+          <p class="error">{{serverErrors.user_name}}</p>
+        </div>
+      </div>
+      <div class="form-input-wrapper">
+        <input type="text" class="form-input" formControlName="email" placeholder="Ел.Пошта" (input)="serverErrors.email = null">
+        <div *ngIf="form.get('email').invalid && form.get('email').touched" class="error-block">
+          <p *ngIf="form.get('email').errors.email" class="error">Введіть правильний email</p>
+          <p *ngIf="form.get('email').errors.required"  class="error">Введіть email</p>
+        </div>
+        <div *ngIf="serverErrors.email" class="error-block">
+          <p class="error">{{serverErrors.email}}</p>
+        </div>
+      </div>
+      <div class="form-input-wrapper">
+        <input type="password" class="form-input" formControlName="password" placeholder="Пароль">
+        <div *ngIf="form.get('password').invalid && form.get('password').touched" class="error-block">
+          <p *ngIf="form.get('password').errors.minlength" class="error">Пароль повинен містити не менше 6 символів</p>
+          <p *ngIf="form.get('password').errors.required"  class="error">Введіть пароль</p>
+        </div>
+        <div *ngIf="serverErrors.password" class="error-block">
+          <p class="error">{{serverErrors.password}}</p>
+        </div>
+      </div>
+      <div class="form-input-wrapper">
+        <input type="text" class="form-input" formControlName="location" placeholder="Місце проживання">
+        <div *ngIf="form.get('location').invalid && form.get('location').touched" class="error-block">
+          <p *ngIf="form.get('location').errors.required"  class="error">Заповніть поле</p>
+          <p *ngIf="form.get('location').errors.minlength"  class="error">Заповніть поле</p>
+        </div>
+        <div *ngIf="serverErrors.location" class="error-block">
+          <p class="error">{{serverErrors.location}}</p>
+        </div>
+      </div>
+      <div class="form-input-wrapper">
+        <input type="number" class="form-input" formControlName="phoneNumber" placeholder="Номер телефону">
+        <div *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="error-block">
+          <p *ngIf="form.get('phoneNumber').errors.required"  class="error">Введіть номер телефону</p>
+          <p *ngIf="form.get('phoneNumber').errors.pattern"  class="error">Введіть правильний номер телефону</p>
+        </div>
+        <div *ngIf="serverErrors.phone_number" class="error-block">
+          <p class="error">{{serverErrors.phone_number}}</p>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Зареєструватися</button>
+    </form>
+    <p class="bottom-hint">Є аккаунт? <a routerLink="/login">Увійти</a></p>
+  </div>
+</section>

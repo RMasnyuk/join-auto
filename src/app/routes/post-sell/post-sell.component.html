@@ -1,0 +1,249 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="title">Додати оголошення</h1>
+        <div class="shadow-box">
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="section-box">
+              <div class="header">
+                <div class="section-number"><span>1</span></div>
+                <h2 class="section-title">
+                  Додайте декілька фото
+                </h2>
+              </div>
+              <div class="add-photo-wrapper">
+                <input type="file" id="setPhoto" class="d-none" (change)="addPhoto($event)">
+                <label class="set-photo" for="setPhoto">
+                  <svg-icon src="../../assets/images/plus-circle.svg"></svg-icon>
+                  <span class="bottom-text">Додати фото</span>
+                </label>
+                <div *ngFor="let photo of photosList; index as i" class="set-photo added-photo">
+                  <svg-icon src="../../assets/images/image.svg"></svg-icon>
+                  <span class="bottom-text">{{photo.name}}</span>
+                  <button class="remove" (click)="removePhoto(i)">x</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-box">
+              <div class="header">
+                <div class="section-number"><span>2</span></div>
+                <h2 class="section-title">
+                  Основна інформація
+                </h2>
+              </div>
+              <div class="select-info-wrapper">
+                <div class="select-wrapper">
+                  <ng-autocomplete
+                    formControlName="vehicleType"
+                    placeHolder="Тип транспорту"
+                    [data]="data"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="vehicleTypeTemplate"
+                    [notFoundTemplate]="notFoundTypeTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #vehicleTypeTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundTypeTemplate>
+                    <div [innerHTML]="'Не знайдено'"></div>
+                  </ng-template>
+                </div>
+
+                <div class="select-wrapper">
+                  <ng-autocomplete
+                    formControlName="name"
+                    placeHolder="Марка авто"
+                    [data]="[1,2,3]"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="markTemplate"
+                    [notFoundTemplate]="notFoundMarkTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #markTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundMarkTemplate>
+                    <div [innerHTML]="'Не знайдено'"></div>
+                  </ng-template>
+                </div>
+
+                <div class="select-wrapper">
+                  <ng-autocomplete
+                    formControlName="model"
+                    placeHolder="Модель авто"
+                    [data]="[1,2,3]"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="modelTemplate"
+                    [notFoundTemplate]="notFoundModelTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #modelTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundModelTemplate>
+                    <div [innerHTML]="'Не знайдено'"></div>
+                  </ng-template>
+                </div>
+
+                <div class="select-wrapper">
+                  <ng-autocomplete
+                    formControlName="year"
+                    placeHolder="Рік випуску"
+                    [data]="[1,2,3]"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="yearTemplate"
+                    [notFoundTemplate]="notFoundYearTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #yearTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundYearTemplate>
+                    <div [innerHTML]="'Не знайдено'"></div>
+                  </ng-template>
+                </div>
+
+                <div class="select-wrapper">
+                  <ng-autocomplete
+                    formControlName="bodyType"
+                    placeHolder="Тип кузова"
+                    [data]="[1,2,3]"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="bodyTypeTemplate"
+                    [notFoundTemplate]="notFoundBodyTypeTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #bodyTypeTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundBodyTypeTemplate>
+                    <div [innerHTML]="'Не знайдено'"></div>
+                  </ng-template>
+                </div>
+
+                <div class="select-wrapper">
+                    <input type="number" class="input-default" placeholder="Пробіг, км" formControlName="mileage">
+                </div>
+
+                <div class="select-wrapper">
+                  <ng-autocomplete
+                    formControlName="engine"
+                    placeHolder="Двигун"
+                    [data]="[1,2,3]"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="engineTemplate"
+                    [notFoundTemplate]="notFoundEngineTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #engineTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundEngineTemplate>
+                    <div [innerHTML]="'Не знайдено'"></div>
+                  </ng-template>
+                </div>
+
+                <div class="select-wrapper">
+                  <ng-autocomplete
+                    formControlName="transmittion"
+                    placeHolder="Трансмісія"
+                    [data]="[1,2,3]"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="transmittionTemplate"
+                    [notFoundTemplate]="notFoundTransmittionTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #transmittionTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundTransmittionTemplate>
+                    <div [innerHTML]="'Не знайдено'"></div>
+                  </ng-template>
+                </div>
+
+                <div class="select-wrapper">
+                  <ng-autocomplete
+                    formControlName="wheelDrive"
+                    placeHolder="Привід"
+                    [data]="[1,2,3]"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="wheelDriveTemplate"
+                    [notFoundTemplate]="notFoundWheelDriveTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #wheelDriveTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundWheelDriveTemplate>
+                    <div [innerHTML]="'Не знайдено'"></div>
+                  </ng-template>
+                </div>
+
+                <div class="select-wrapper">
+                  <ng-autocomplete
+                    formControlName="color"
+                    placeHolder="Колір"
+                    [data]="[1,2,3]"
+                    [searchKeyword]="keywords"
+                    [itemTemplate]="colorTemplate"
+                    [notFoundTemplate]="notFoundColorTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #colorTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundColorTemplate>
+                    <div [innerHTML]="'Не знайдено'"></div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-box">
+              <div class="header">
+                <div class="section-number"><span>3</span></div>
+                <h2 class="section-title">
+                  Ціна, $
+                </h2>
+              </div>
+              <div class="select-info-wrapper">
+                <div class="select-wrapper">
+                  <input type="number" class="input-default" placeholder="Введіть ціну в $" formControlName="price">
+                </div>
+              </div>
+            </div>
+
+            <div class="section-box">
+              <div class="header">
+                <div class="section-number"><span>4</span></div>
+                <h2 class="section-title">
+                  Додайте опис
+                </h2>
+              </div>
+              <div class="select-info-wrapper">
+                <div class="select-wrapper textarea-wrapper">
+                  <textarea class="input-default" cols="30" rows="40" placeholder="Опис"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+            <button type="submit" class="button btn-alternative hover-effect">Розмістити оголошення</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

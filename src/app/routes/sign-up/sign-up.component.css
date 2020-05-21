@@ -1,0 +1,63 @@
+.login-section {
+  padding: 50px 0;
+  display: flex;
+  justify-content: center; }
+  .login-section .logo-title {
+    color: var(--dark-green);
+    font-size: 42px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Indie Flower', cursive; }
+    .login-section .logo-title span {
+      color: var(--rose);
+      font-family: 'Indie Flower', cursive; }
+  .login-section .title {
+    color: var(--dark);
+    font-size: 22px;
+    text-align: center;
+    margin: 40px 0 20px; }
+  .login-section .login-form-wrapper {
+    width: 100%;
+    max-width: 250px; }
+    .login-section .login-form-wrapper .form-input-wrapper {
+      margin-bottom: 20px; }
+      .login-section .login-form-wrapper .form-input-wrapper .form-input {
+        display: block;
+        width: 100%;
+        padding: 0 20px;
+        border-radius: 19px;
+        border: none;
+        height: 40px;
+        color: var(--dark);
+        font-size: 14px;
+        outline: none; }
+        .login-section .login-form-wrapper .form-input-wrapper .form-input:focus {
+          box-shadow: 0 2px 13px 3px rgba(0, 0, 0, 0.07); }
+    .login-section .login-form-wrapper .error-block {
+      padding: 5px 0 0 20px; }
+      .login-section .login-form-wrapper .error-block .error {
+        color: #ff2d42;
+        font-size: 14px;
+        font-weight: 700; }
+    .login-section .login-form-wrapper .submit-btn {
+      width: 100%;
+      height: 50px;
+      background-color: var(--dark-green);
+      border-radius: 19px;
+      border: none;
+      color: #ffffff;
+      font-size: 14px;
+      margin-top: 30px; }
+      .login-section .login-form-wrapper .submit-btn:hover {
+        transform: scale(1.02); }
+    .login-section .login-form-wrapper .bottom-hint {
+      color: var(--dark);
+      font-size: 14px;
+      text-align: center;
+      margin-top: 15px; }
+      .login-section .login-form-wrapper .bottom-hint a {
+        display: block;
+        margin-top: 5px;
+        color: var(--rose); }
+
+/*# sourceMappingURL=sign-up.component.css.map */

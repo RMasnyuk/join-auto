@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,QAAS;EACP,OAAO,EAAE,MAAM;EAEf,eAAO;IACL,SAAS,EAAE,IAAI;IACf,WAAW,EAAE,GAAG;IAChB,YAAY,EAAE,IAAI;IAClB,KAAK,EAAE,WAAW;IAClB,aAAa,EAAE,IAAI",
+"sources": ["order-list.component.scss"],
+"names": [],
+"file": "order-list.component.css"
+}

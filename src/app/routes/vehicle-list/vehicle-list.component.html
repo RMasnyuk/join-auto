@@ -1,0 +1,155 @@
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-5 col-lg-3 mb-4">
+        <div class="filter-wrapper">
+          <h1 class="title">Фільтр</h1>
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="row">
+              <div class="col-6">
+                <ng-autocomplete
+                  formControlName="priceFrom"
+                  placeHolder="Рік від">
+                </ng-autocomplete>
+              </div>
+              <div class="col-6">
+                <ng-autocomplete
+                  formControlName="priceTo"
+                  placeHolder="Рік до">
+                </ng-autocomplete>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-6 d-flex justify-content-between">
+                <p class="label-text">Нові</p>
+                <input type="radio" id="used" class="radio-input d-none" formControlName="isNew" name="isNew"
+                       [value]="true">
+                <label for="used" class="label">
+                  <img src="../../../assets/images/check.svg" alt="check">
+                </label>
+              </div>
+              <div class="col-6 d-flex justify-content-between">
+                <p class="label-text">Б/У</p>
+                <input type="radio" id="not-used" class="radio-input d-none" formControlName="isNew" name="isNew"
+                       [value]="false">
+                <label for="not-used" class="label">
+                  <img src="../../../assets/images/check.svg" alt="check">
+                </label>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-12 d-flex justify-content-between">
+                <p class="label-text">Доступний для поширення</p>
+                <input type="radio" id="promote" class="radio-input d-none" formControlName="isAvailableForPromote"
+                       name="isAvailableForPromote">
+                <label for="promote" class="label">
+                  <img src="../../../assets/images/check.svg" alt="check">
+                </label>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-12">
+                <ng-autocomplete
+                  formControlName="bodyType"
+                  placeHolder="Тип кузова"
+                  [data]="bodyTypeData"
+                  [searchKeyword]="keywords"
+                  [itemTemplate]="bodyTypeTemplate">
+                </ng-autocomplete>
+
+                <ng-template #bodyTypeTemplate let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-6">
+                <ng-autocomplete
+                  formControlName="mileageFrom"
+                  placeHolder="Пробіг від">
+                </ng-autocomplete>
+              </div>
+              <div class="col-6">
+                <ng-autocomplete
+                  formControlName="mileageTo"
+                  placeHolder="Пробіг до">
+                </ng-autocomplete>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-12">
+                <ng-autocomplete
+                  formControlName="engine"
+                  placeHolder="Двигун"
+                  [data]="bodyTypeData"
+                  [searchKeyword]="keywords"
+                  [itemTemplate]="engineTemplate">
+                </ng-autocomplete>
+
+                <ng-template #engineTemplate let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-12">
+                <ng-autocomplete
+                  formControlName="transmittion"
+                  placeHolder="Трансмісія"
+                  [data]="bodyTypeData"
+                  [searchKeyword]="keywords"
+                  [itemTemplate]="transmittionTemplate">
+                </ng-autocomplete>
+
+                <ng-template #transmittionTemplate let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-12">
+                <ng-autocomplete
+                  formControlName="wheelDrive"
+                  placeHolder="Привід"
+                  [data]="bodyTypeData"
+                  [searchKeyword]="keywords"
+                  [itemTemplate]="wheelDriveTemplate">
+                </ng-autocomplete>
+
+                <ng-template #wheelDriveTemplate let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+              </div>
+            </div>
+            <div class="button-wrapper d-flex justify-content-end mt-4">
+              <button class="button btn-alternative w-50">Пошук</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col">
+        <div class="container">
+          <div class="row">
+            <div *ngFor="let product of [1,2,3,4]" class="col-12 col-lg-4 mb-4">
+              <app-product-card></app-product-card>
+            </div>
+          </div>
+
+          <div class="row d-none">
+            <div class="col-12 d-flex justify-content-center">
+              <ngb-pagination [collectionSize]="120" [(page)]="page" [maxSize]="2"
+                              [boundaryLinks]="true"></ngb-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
