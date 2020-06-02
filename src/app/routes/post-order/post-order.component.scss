@@ -153,3 +153,30 @@ section {
   max-width: 45%;
 }
 
+.label {
+  width: 20px;
+  height: 20px;
+  background-color: var(--bright);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 13px 3px rgba(0, 0, 0, 0.1);
+}
+
+.radio-input:checked + label {
+  background-color: var(--rose);
+}
+
+.error-block {
+  margin-top: 10px;
+  .error {
+    color: #ff2d42;
+    text-align: center;
+  }
+}
+
+.textarea {
+  background-color: #f7f7f7;
+  resize: none;
+  height: 50px;
+}

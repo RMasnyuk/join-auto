@@ -6,6 +6,7 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
 import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import {ViewPhotosModalModule} from '../../modals/view-photos-modal/view-photos-modal.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {ViewPhotosModalModule} from '../../modals/view-photos-modal/view-photos-
     AngularSvgIconModule,
     NgbRatingModule,
     CarouselModule,
-    ViewPhotosModalModule
+    ViewPhotosModalModule,
+    ReactiveFormsModule
   ],
   exports: [ProductPageComponent]
 })

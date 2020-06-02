@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import {OrderProductPageComponent} from './order-product-page.component';
 import {RouterModule} from '@angular/router';
 import {AngularSvgIconModule} from 'angular-svg-icon';
-import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDatepickerModule, NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarouselModule} from 'ngx-owl-carousel-o';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,10 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
     ]),
     AngularSvgIconModule,
     NgbRatingModule,
-    CarouselModule
+    CarouselModule,
+    ReactiveFormsModule,
+    NgbDatepickerModule,
+    FormsModule
   ],
   exports: [OrderProductPageComponent]
 })

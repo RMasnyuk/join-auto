@@ -1,9 +1,10 @@
-<a routerLink="/product-page" class="product">
+<a [routerLink]="['/product-page', vehicleData._id]" class="product">
 <div class="product-wrapper">
   <div class="img-wrapper" [ngClass]="{'show-hot': showHot}">
-    <span class="image-background"></span>
+    <span class="image-background" [ngStyle]="{'background-image': 'url('+vehicleData.images[0]+')'}">
+    </span>
   </div>
-  <p class="name">BMW 328 2011</p>
-  <p class="info">11 429$ <span class="mileage">97 тис. км</span></p>
+  <p class="name">{{vehicleData.brand}} {{vehicleData.model}} {{vehicleData.year}}</p>
+  <p class="info">{{vehicleData.price}}$ <span class="mileage">{{vehicleData.mileage}} км</span></p>
 </div>
 </a>

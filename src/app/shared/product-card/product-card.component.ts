@@ -6,8 +6,11 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
-@Input() showHot: boolean;
-  constructor() { }
+  @Input() showHot: boolean;
+  @Input() vehicleData;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

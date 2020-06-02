@@ -1,4 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AuthService} from '../../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +8,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  isAuth = false;
   public isScrolledBottom = false;
   public scrolledPixels = 0;
   public actions = [
@@ -25,7 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   public isMenuActive = false;
 
-  constructor() {
+  constructor(public authService: AuthService, private router: Router) {
   }
 
   openMenu(): void {
@@ -45,10 +48,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.addScroll = this.addScroll.bind(this);
     window.addEventListener('scroll', this.addScroll);
+    this.isAuth = this.authService.isAuthenticated();
   }
 
   ngOnDestroy(): void {
     window.removeEventListener('scroll', this.addScroll);
   }
 
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+
+  }
 }

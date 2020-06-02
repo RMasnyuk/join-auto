@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {VehiclesService} from '../../services/vehicles.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +11,7 @@ export class HomePageComponent implements OnInit {
   public keywords = 'name';
   private form: FormGroup;
   public isCollapsed = false;
-  public productsList = [];
+  productsList: any = [];
   typeData = [
     {
       id: 1,
@@ -71,7 +72,9 @@ export class HomePageComponent implements OnInit {
   yearFrom = [
     {name: '2020'}
   ]
-  constructor() { }
+  constructor(
+    private vehiclesService: VehiclesService
+  ) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -83,11 +86,15 @@ export class HomePageComponent implements OnInit {
       yearTo: new FormControl(),
       priceFrom: new FormControl(),
       priceTo: new FormControl()
-    })
+    });
+
+    this.vehiclesService.getVehicles().subscribe( (res: any) => {
+      this.productsList = res.items.slice(0, 6);
+      console.log(this.productsList);
+    });
   }
 
   submit() {
-    console.log(this.form)
   }
 
 }

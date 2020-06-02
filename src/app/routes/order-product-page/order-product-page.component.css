@@ -72,6 +72,8 @@ section {
   .description .description-main .gray-text {
     color: #939394; }
 
+.description-block.form-block {
+  max-width: 400px; }
 .description-block .title {
   font-size: 18px;
   padding-left: 0; }
@@ -116,5 +118,41 @@ section {
   .shadow-box.background {
     background-color: #f5f7f9;
     box-shadow: none; }
+  .shadow-box .approve-wrapper {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 38px; }
+    .shadow-box .approve-wrapper .approve-btn {
+      background-color: #9df3be;
+      font-size: 14px;
+      display: block;
+      width: 120px; }
+      .shadow-box .approve-wrapper .approve-btn.decline-btn {
+        background-color: #ff2d42;
+        color: #ffffff;
+        margin-top: 10px; }
+
+.offer-button-wrapper .add-offer {
+  font-size: 12px;
+  padding: 7px 25px;
+  color: var(--dark-green);
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 2px solid var(--dark-green) !important; }
+
+.sold {
+  color: #ff2d42;
+  font-size: 18px;
+  margin-top: 20px; }
+
+.declined {
+  color: #ff2d42;
+  text-align: end; }
+
+.input-default {
+  background-color: #f7f7f7; }
 
 /*# sourceMappingURL=order-product-page.component.css.map */

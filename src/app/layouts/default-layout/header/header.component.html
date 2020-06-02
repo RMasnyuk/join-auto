@@ -7,10 +7,10 @@
   <div class="action-wrapper d-none d-lg-flex">
     <a *ngFor="let action of actions" class="button hover-effect" [routerLink]="action.linkTo">{{action.title}}</a>
   </div>
-  <a class="login-wrapper d-none d-lg-flex" routerLink="/">
-    <a routerLink="/login" class="login">Увійти</a>
-    <!--    <img src="../../assets/images/user.svg" alt="login">-->
-  </a>
+  <div class="login-wrapper d-none d-lg-flex" routerLink="/">
+    <a *ngIf="!isAuth" routerLink="/login" class="login">Увійти</a>
+    <button *ngIf="isAuth" class="login" (click)="logout()">Вийти</button>
+  </div>
   <div class="side-menu-btn d-block d-lg-none">
     <button class="menu-btn" [ngClass]="{'active': isMenuActive}" (click)="openMenu()">
       <span></span><span></span><span></span>
@@ -27,7 +27,8 @@
       <span>
      <svg-icon [svgStyle]="{'width': '25', 'height': '25', 'stroke': '#343A40'}"
                src="../../assets/images/user.svg"></svg-icon>
-      <a routerLink="/login" class="login">Увійти</a>
+      <a *ngIf="!isAuth" routerLink="/login" class="login">Увійти</a>
+        <button *ngIf="isAuth" class="login" (click)="logout()">Вийти</button>
         </span>
     </a>
   </div>

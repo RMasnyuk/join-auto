@@ -1,0 +1,6 @@
+<a [routerLink]="['/product-page', orderData._id]" class="product">
+  <div class="product-wrapper">
+    <p class="name">{{orderData.title}} {{orderData.model}} {{orderData.year_from}} - {{orderData.year_to}}</p>
+    <p class="info">{{orderData.price_from}}$ - {{orderData.price_to}}$ <span class="mileage">~{{orderData.mileage}} км</span></p>
+  </div>
+</a>

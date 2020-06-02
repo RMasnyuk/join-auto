@@ -36,6 +36,11 @@ section {
       margin-right: 10px;
     }
   }
+
+  .sub-title {
+    font-size: 18px;
+    color: var(--dark);
+  }
 }
 
 .add-photo-wrapper {
@@ -146,5 +151,28 @@ section {
         }
       }
     }
+  }
+}
+
+
+.label {
+  width: 20px;
+  height: 20px;
+  background-color: var(--bright);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 13px 3px rgba(0, 0, 0, 0.1);
+}
+
+.radio-input:checked + label {
+  background-color: var(--rose);
+}
+
+.error-block {
+  margin-top: 10px;
+  .error {
+    color: #ff2d42;
+    text-align: center;
   }
 }

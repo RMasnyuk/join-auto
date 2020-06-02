@@ -40,7 +40,10 @@
       color: #ffffff;
       font-size: 12px;
       font-weight: 600;
-      margin-right: 10px; }
+      margin-right: 10px;
+      background-color: transparent;
+      outline: none;
+      border: none; }
   .header .side-menu-btn {
     line-height: 0; }
     .header .side-menu-btn .menu-btn {

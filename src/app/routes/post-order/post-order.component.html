@@ -15,28 +15,9 @@
               <div class="select-info-wrapper">
                 <div class="select-wrapper">
                   <ng-autocomplete
-                    formControlName="vehicleType"
-                    placeHolder="Тип транспорту"
-                    [data]="data"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="vehicleTypeTemplate"
-                    [notFoundTemplate]="notFoundTypeTemplate">
-                  </ng-autocomplete>
-
-                  <ng-template #vehicleTypeTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
-
-                  <ng-template #notFoundTypeTemplate>
-                    <div [innerHTML]="'Не знайдено'"></div>
-                  </ng-template>
-                </div>
-
-                <div class="select-wrapper">
-                  <ng-autocomplete
                     formControlName="name"
                     placeHolder="Марка авто"
-                    [data]="[1,2,3]"
+                    [data]="data"
                     [searchKeyword]="keywords"
                     [itemTemplate]="markTemplate"
                     [notFoundTemplate]="notFoundMarkTemplate">
@@ -55,76 +36,32 @@
                   <ng-autocomplete
                     formControlName="model"
                     placeHolder="Модель авто"
-                    [data]="[1,2,3]"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="modelTemplate"
-                    [notFoundTemplate]="notFoundModelTemplate">
+                    [searchKeyword]="keywords">
                   </ng-autocomplete>
-
-                  <ng-template #modelTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
-
-                  <ng-template #notFoundModelTemplate>
-                    <div [innerHTML]="'Не знайдено'"></div>
-                  </ng-template>
                 </div>
 
                 <div class="select-wrapper d-flex justify-content-between">
                   <ng-autocomplete
                     class="double-input"
                     formControlName="yearFrom"
-                    placeHolder="Рік від"
-                    [data]="[1,2,3]"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="yearTemplate"
-                    [notFoundTemplate]="notFoundYearTemplate">
+                    placeHolder="Рік від">
                   </ng-autocomplete>
-
-                  <ng-template #yearTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
-
-                  <ng-template #notFoundYearTemplate>
-                    <div [innerHTML]="'Не знайдено'"></div>
-                  </ng-template>
 
                   <ng-autocomplete
                     class="double-input"
                     formControlName="yearTo"
                     placeHolder="Рік до"
-                    [data]="[1,2,3]"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="yearToTemplate"
-                    [notFoundTemplate]="notFoundYearToTemplate">
+                    >
                   </ng-autocomplete>
-
-                  <ng-template #yearToTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
-
-                  <ng-template #notFoundYearToTemplate>
-                    <div [innerHTML]="'Не знайдено'"></div>
-                  </ng-template>
                 </div>
 
                 <div class="select-wrapper">
-                  <ng-autocomplete
-                    formControlName="bodyType"
-                    placeHolder="Тип кузова"
-                    [data]="[1,2,3]"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="bodyTypeTemplate"
-                    [notFoundTemplate]="notFoundBodyTypeTemplate">
-                  </ng-autocomplete>
-
-                  <ng-template #bodyTypeTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
-
-                  <ng-template #notFoundBodyTypeTemplate>
-                    <div [innerHTML]="'Не знайдено'"></div>
-                  </ng-template>
+                  <select class="input-default" formControlName="bodyType">
+                    <option [selected]="true" disabled>Тип кузова</option>
+                    <option value="1">Седан</option>
+                    <option value="2">Позашляховик</option>
+                    <option value="3">Купе</option>
+                  </select>
                 </div>
 
                 <div class="select-wrapper">
@@ -132,79 +69,64 @@
                 </div>
 
                 <div class="select-wrapper">
-                  <ng-autocomplete
-                    formControlName="engine"
-                    placeHolder="Двигун"
-                    [data]="[1,2,3]"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="engineTemplate"
-                    [notFoundTemplate]="notFoundEngineTemplate">
-                  </ng-autocomplete>
-
-                  <ng-template #engineTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
-
-                  <ng-template #notFoundEngineTemplate>
-                    <div [innerHTML]="'Не знайдено'"></div>
-                  </ng-template>
+                  <select class="input-default" formControlName="engine">
+                    <option [selected]="true" disabled>Об'єм двигуна</option>
+                    <option value="1">1.5</option>
+                    <option value="2">1.6</option>
+                    <option value="3">2.0</option>
+                    <option value="4">2.2</option>
+                    <option value="5">2.5</option>
+                    <option value="6">3.0</option>
+                  </select>
                 </div>
 
                 <div class="select-wrapper">
-                  <ng-autocomplete
-                    formControlName="transmittion"
-                    placeHolder="Трансмісія"
-                    [data]="[1,2,3]"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="transmittionTemplate"
-                    [notFoundTemplate]="notFoundTransmittionTemplate">
-                  </ng-autocomplete>
-
-                  <ng-template #transmittionTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
-
-                  <ng-template #notFoundTransmittionTemplate>
-                    <div [innerHTML]="'Не знайдено'"></div>
-                  </ng-template>
+                  <select class="input-default" formControlName="transmittion">
+                    <option [selected]="true" disabled>Трансмісія</option>
+                    <option value="1">Автоматична</option>
+                    <option value="2">Механічна</option>
+                  </select>
                 </div>
 
                 <div class="select-wrapper">
-                  <ng-autocomplete
-                    formControlName="wheelDrive"
-                    placeHolder="Привід"
-                    [data]="[1,2,3]"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="wheelDriveTemplate"
-                    [notFoundTemplate]="notFoundWheelDriveTemplate">
-                  </ng-autocomplete>
-
-                  <ng-template #wheelDriveTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
-
-                  <ng-template #notFoundWheelDriveTemplate>
-                    <div [innerHTML]="'Не знайдено'"></div>
-                  </ng-template>
+                  <select class="input-default" formControlName="wheelDrive">
+                    <option [selected]="true" disabled>Привід</option>
+                    <option value="1">Передній</option>
+                    <option value="2">Задній</option>
+                    <option value="3">Повний</option>
+                  </select>
                 </div>
 
                 <div class="select-wrapper">
-                  <ng-autocomplete
-                    formControlName="color"
-                    placeHolder="Колір"
-                    [data]="[1,2,3]"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="colorTemplate"
-                    [notFoundTemplate]="notFoundColorTemplate">
-                  </ng-autocomplete>
+                  <select class="input-default" formControlName="color">
+                    <option [selected]="true" disabled>Колір</option>
+                    <option value="1">Червоний</option>
+                    <option value="2">Синій</option>
+                    <option value="3">Жовтий</option>
+                    <option value="3">Білий</option>
+                    <option value="3">Чорний</option>
+                  </select>
+                </div>
 
-                  <ng-template #colorTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
-
-                  <ng-template #notFoundColorTemplate>
-                    <div [innerHTML]="'Не знайдено'"></div>
-                  </ng-template>
+                <div class="select-wrapper">
+                  <div class="row mt-4">
+                    <div class="col-6 d-flex justify-content-between">
+                      <p class="label-text">Новий</p>
+                      <input type="radio" id="used" class="radio-input d-none" formControlName="isNew" name="isNew"
+                             [value]="1">
+                      <label for="used" class="label">
+                        <img src="../../../assets/images/check.svg" alt="check">
+                      </label>
+                    </div>
+                    <div class="col-6 d-flex justify-content-between">
+                      <p class="label-text">Б/В</p>
+                      <input type="radio" id="not-used" class="radio-input d-none" formControlName="isNew" name="isNew"
+                             [value]="0" [checked]="true">
+                      <label for="not-used" class="label">
+                        <img src="../../../assets/images/check.svg" alt="check">
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -233,12 +155,15 @@
               </div>
               <div class="select-info-wrapper">
                 <div class="select-wrapper textarea-wrapper">
-                  <textarea class="input-default" cols="30" rows="40" placeholder="Опис"></textarea>
+                  <textarea class="input-default" cols="30" rows="40" placeholder="Опис" formControlName="description"></textarea>
                 </div>
               </div>
             </div>
             <div class="d-flex justify-content-center">
               <button type="submit" class="button btn-alternative hover-effect">Розмістити замовлення</button>
+            </div>
+            <div class="error-block" *ngIf="!validForm">
+              <p class="error">Заповніть усі поля</p>
             </div>
           </form>
         </div>

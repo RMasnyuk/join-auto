@@ -30,8 +30,12 @@ export class LoginPageComponent implements OnInit {
           password: this.form.get('password').value
         }
       )
-        .subscribe( res => {
-          this.router.navigate(['/home-page']);
+        .subscribe( (res: any) => {
+          localStorage.setItem('user_token', res.auth_token);
+          this.authService.getOwnProfileInfo().subscribe((response: any) => {
+            this.authService.setCredentials(response._id);
+          })
+          this.router.navigate(['/']);
         }, error => {
           for (const errorField of error.error) {
             this.serverErrors[errorField.field] = errorField.error;

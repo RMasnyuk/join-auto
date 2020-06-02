@@ -26,8 +26,11 @@ export class SignUpComponent implements OnInit {
         password: this.form.get('password').value,
         phone_number: this.form.get('phoneNumber').value,
         location: this.form.get('location').value
-      }).subscribe(res => {
-        localStorage.setItem('user_token', 'auth_token');
+      }).subscribe((res: any) => {
+        localStorage.setItem('user_token', res.auth_token);
+        this.authService.getOwnProfileInfo().subscribe((response: any) => {
+          this.authService.setCredentials(response._id);
+        })
         this.router.navigate(['/']);
       }, (errors) => {
         for (const error of errors.error) {

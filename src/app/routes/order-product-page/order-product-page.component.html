@@ -6,9 +6,9 @@
           <div class="col-lg-6 order-4 order-lg-1">
             <div class="info-wrapper">
               <div class="d-none d-lg-block">
-                <h1 class="title">BMW 328 X-Drive</h1>
-                <h1 class="title mt-2">2013 - 2014</h1>
-                <h2 class="price">14 950 $ - 15 000 $</h2>
+                <h1 class="title text-capitalize">{{orderData.title}} {{orderData.model}}</h1>
+                <h1 class="title mt-2 text-capitalize">{{orderData.year_from}} - {{orderData.year_to}}</h1>
+                <h2 class="price text-capitalize">{{orderData.price_from}} $ - {{orderData.price_to}} $</h2>
               </div>
               <div class="shadow-box">
                 <div class="author-wrapper">
@@ -18,36 +18,36 @@
                     </div>
                     <div class="author-name-wrapper">
                       <p class="subtitle">Замовник</p>
-                      <p class="author-name">Діма</p>
+                      <p class="author-name">{{orderData.user_owner.user_name}}</p>
                       <ngb-rating class="rating" [rate]="2" [readonly]="true" [max]="5"></ngb-rating>
                     </div>
                   </div>
                   <p class="user-options">
                     <svg-icon src="../../../assets/images/map-pin.svg"></svg-icon>
-                    Івано-Франківськ
+                    {{orderData.user_owner.location}}
                   </p>
                   <p class="user-options">
                     <svg-icon src="../../../assets/images/phone.svg"></svg-icon>
-                    <a href="tel: +38 098 22 45 697" title="+38 098 22 45 697"> +38 098 22 45 697</a>
+                    <a [href]="'tel:' +  orderData.user_owner.phone_number" [title]="orderData.user_owner.phone_number"> {{orderData.user_owner.phone_number}}</a>
                   </p>
                   <p class="user-options">
                     <svg-icon src="../../../assets/images/mail.svg"></svg-icon>
-                    <a href="mailto:joinauto2020@gmail.com" title="joinauto2020@gmail.com">joinauto2020@gmail.com</a>
+                    <a [href]="'mailto:' + orderData.user_owner.email" [title]="orderData.user_owner.email">{{orderData.user_owner.email}}</a>
                   </p>
                 </div>
               </div>
             </div>
           </div>
             <div class="col-12 d-block d-lg-none mb-4">
-              <h1 class="title">BMW 328 X-Drive</h1>
-              <h1 class="title mt-2">2013 - 2014</h1>
-              <h2 class="price">14 950 $ - 15 000 $</h2>
+              <h1 class="title">{{orderData.title}} {{orderData.model}}</h1>
+              <h1 class="title mt-2">{{orderData.year_from}} - {{orderData.year_to}}</h1>
+              <h2 class="price">{{orderData.price_from}} $ - {{orderData.price_to}} $</h2>
           </div>
           <div class="col-lg-6 order-2 order-lg-3 d-flex align-items-end">
             <div class="shadow-box mt-0 w-100">
               <div class="description">
-                <h2 class="small-title">BMW 328 X-Drive</h2>
-                <p class="main-info">Седан • 4 дверей • 5 місць</p>
+                <h2 class="small-title">{{orderData.title}} {{orderData.model}}</h2>
+                <p class="main-info text-capitalize">{{constantsService.BODY_TYPE[orderData.body_type]}}</p>
                 <!--              description-->
                 <div class="description-main">
                   <div class="row mb-2">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-8">
                       <p>
-                        139 тис. км
+                        {{orderData.mileage}} км
                       </p>
                     </div>
                   </div>
@@ -66,10 +66,7 @@
                     </div>
                     <div class="col-8">
                       <p>
-                        2 л (245 к.с. / 180 кВт) • Бензин
-                      </p>
-                      <p>
-                        місто 12 • траса 9 • змішаний 11
+                        {{constantsService.ENGINE[orderData.engine]}} л
                       </p>
                     </div>
                   </div>
@@ -78,8 +75,8 @@
                       <p class="gray-text">Коробка передач</p>
                     </div>
                     <div class="col-8">
-                      <p>
-                        Автомат
+                      <p class="text-capitalize">
+                        {{constantsService.TRANSMISSION[orderData.transmittion]}}
                       </p>
                     </div>
                   </div>
@@ -88,8 +85,8 @@
                       <p class="gray-text">Привід</p>
                     </div>
                     <div class="col-8">
-                      <p>
-                        Повний
+                      <p class="text-capitalize">
+                        {{constantsService.WHEEL_DRIVE[orderData.wheel_drive]}}
                       </p>
                     </div>
                   </div>
@@ -98,8 +95,8 @@
                       <p class="gray-text">Колір</p>
                     </div>
                     <div class="col-8">
-                      <p>
-                        Чорний металік
+                      <p class="text-capitalize">
+                        {{constantsService.COLOR[orderData.color]}}
                       </p>
                     </div>
                   </div>
@@ -110,27 +107,50 @@
           <div class="col-lg-12 order-3 order-lg-4">
             <div class="shadow-box">
               <div class="description-block">
-                <h2 class="title">Коментарі</h2>
+                <h2 class="title">Коментар</h2>
                 <p class="description-text">
-                  Топ Автообіль який коштує своїх грошей
+                  {{orderData.description}}
                 </p>
               </div>
             </div>
 
-            <div class="shadow-box">
+            <div *ngIf="showForm" class="shadow-box">
+              <form [formGroup]="applicationForm" (ngSubmit)="createApplication()">
+                <div class="description-block form-block">
+                  <h2 class="title">Зробити пропозицію</h2>
+                  <div class="input-wrapper mt-3">
+                    <input class="input-default textarea" type="number" placeholder="Додайте ціну, $" formControlName="price">
+                  </div>
+
+                  <div class="input-wrapper mt-3">
+                    <input type="date" class="input-default" formControlName="dateComplete">
+                  </div>
+
+                  <div class="input-wrapper mt-3">
+                    <input class="input-default textarea" placeholder="Додайте коментар" formControlName="message">
+                  </div>
+                  <div class="offer-button-wrapper mt-4">
+                    <button type="submit" class="add-offer btn border">Зробити пропозицію</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div *ngIf="applicationsList.length" class="shadow-box">
               <div class="description-block">
                 <h2 class="title">Пропозиції</h2>
                 <ul class="sell-offers-list">
-                  <li *ngFor="let offer of [1,2,3,4]" class="offer">
+                  <li *ngFor="let application of applicationsList" class="offer">
                     <div class="shadow-box background">
                       <div class="offer-person-wrapper">
                         <div class="img-wrapper">
                           <svg-icon src="../../../assets/images/user.svg"></svg-icon>
                         </div>
-                        <p class="name">Іван</p>
+                        <p class="name">{{application.user_name}}</p>
                       </div>
-                      <p class="gray-text">Сума: <span class="green-text">20 000$</span></p>
-                      <p class="gray-text">Коментарій: <span class="dark-text">Готовий купити даний автомобіль за вказану суму</span></p>
+                      <p class="gray-text">Сума: <span class="green-text">{{application.price}} $</span></p>
+                      <p class="gray-text">Коментарій: <span class="dark-text">{{application.message}}</span></p>
+                      <p class="gray-text">Буде виконано до: <span class="dark-text">{{application.date_complete_to | date: 'MM/dd/yy'}}</span></p>
                     </div>
                   </li>
                 </ul>
