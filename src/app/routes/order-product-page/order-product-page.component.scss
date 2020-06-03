@@ -193,6 +193,11 @@ section {
   &.background {
     background-color: #f5f7f9;
     box-shadow: none;
+    position: relative;
+  }
+
+  &.approved-application {
+    border: 2px solid #9df3be;
   }
 
   .approve-wrapper {
@@ -238,6 +243,11 @@ section {
 
 .declined {
   color: #ff2d42;
+  text-align: end;
+}
+
+.approved {
+  color: var(--green);
   text-align: end;
 }
 

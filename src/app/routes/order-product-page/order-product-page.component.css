@@ -117,7 +117,10 @@ section {
   background-color: #ffffff; }
   .shadow-box.background {
     background-color: #f5f7f9;
-    box-shadow: none; }
+    box-shadow: none;
+    position: relative; }
+  .shadow-box.approved-application {
+    border: 2px solid #9df3be; }
   .shadow-box .approve-wrapper {
     position: absolute;
     right: 10px;
@@ -150,6 +153,10 @@ section {
 
 .declined {
   color: #ff2d42;
+  text-align: end; }
+
+.approved {
+  color: var(--green);
   text-align: end; }
 
 .input-default {

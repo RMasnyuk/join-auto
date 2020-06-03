@@ -28,20 +28,22 @@
                   </p>
                   <p class="user-options">
                     <svg-icon src="../../../assets/images/phone.svg"></svg-icon>
-                    <a [href]="'tel:' +  orderData.user_owner.phone_number" [title]="orderData.user_owner.phone_number"> {{orderData.user_owner.phone_number}}</a>
+                    <a [href]="'tel:' +  orderData.user_owner.phone_number"
+                       [title]="orderData.user_owner.phone_number"> {{orderData.user_owner.phone_number}}</a>
                   </p>
                   <p class="user-options">
                     <svg-icon src="../../../assets/images/mail.svg"></svg-icon>
-                    <a [href]="'mailto:' + orderData.user_owner.email" [title]="orderData.user_owner.email">{{orderData.user_owner.email}}</a>
+                    <a [href]="'mailto:' + orderData.user_owner.email"
+                       [title]="orderData.user_owner.email">{{orderData.user_owner.email}}</a>
                   </p>
                 </div>
               </div>
             </div>
           </div>
-            <div class="col-12 d-block d-lg-none mb-4">
-              <h1 class="title">{{orderData.title}} {{orderData.model}}</h1>
-              <h1 class="title mt-2">{{orderData.year_from}} - {{orderData.year_to}}</h1>
-              <h2 class="price">{{orderData.price_from}} $ - {{orderData.price_to}} $</h2>
+          <div class="col-12 d-block d-lg-none mb-4">
+            <h1 class="title">{{orderData.title}} {{orderData.model}}</h1>
+            <h1 class="title mt-2">{{orderData.year_from}} - {{orderData.year_to}}</h1>
+            <h2 class="price">{{orderData.price_from}} $ - {{orderData.price_to}} $</h2>
           </div>
           <div class="col-lg-6 order-2 order-lg-3 d-flex align-items-end">
             <div class="shadow-box mt-0 w-100">
@@ -114,12 +116,13 @@
               </div>
             </div>
 
-            <div *ngIf="showForm" class="shadow-box">
+            <div *ngIf="showForm && !orderData.selected_application" class="shadow-box">
               <form [formGroup]="applicationForm" (ngSubmit)="createApplication()">
                 <div class="description-block form-block">
                   <h2 class="title">Зробити пропозицію</h2>
                   <div class="input-wrapper mt-3">
-                    <input class="input-default textarea" type="number" placeholder="Додайте ціну, $" formControlName="price">
+                    <input class="input-default textarea" type="number" placeholder="Додайте ціну, $"
+                           formControlName="price">
                   </div>
 
                   <div class="input-wrapper mt-3">
@@ -141,16 +144,28 @@
                 <h2 class="title">Пропозиції</h2>
                 <ul class="sell-offers-list">
                   <li *ngFor="let application of applicationsList" class="offer">
-                    <div class="shadow-box background">
+                    <div class="shadow-box background" [ngClass]="{'approved-application': application.approved}">
+                      <div
+                        *ngIf="!showApproveButton && application.approved === null"
+                        class="approve-wrapper">
+                        <button class="btn approve-btn" (click)="approveApplication(application._id)">Погодитися
+                        </button>
+                        <button class="btn approve-btn decline-btn" (click)="declineApplication(application._id)">
+                          Відмовити
+                        </button>
+                      </div>
                       <div class="offer-person-wrapper">
                         <div class="img-wrapper">
                           <svg-icon src="../../../assets/images/user.svg"></svg-icon>
                         </div>
-                        <p class="name">{{application.user_name}}</p>
+                        <p class="name">{{application.applicant_name}}</p>
                       </div>
                       <p class="gray-text">Сума: <span class="green-text">{{application.price}} $</span></p>
                       <p class="gray-text">Коментарій: <span class="dark-text">{{application.message}}</span></p>
-                      <p class="gray-text">Буде виконано до: <span class="dark-text">{{application.date_complete_to | date: 'MM/dd/yy'}}</span></p>
+                      <p class="gray-text">Буде виконано до: <span
+                        class="dark-text">{{application.date_complete_to | date: 'MM/dd/yy'}}</span></p>
+                      <p *ngIf="application.approved === false" class="declined">Відмовлено!</p>
+                      <p *ngIf="application.approved" class="approved">Прийнято!</p>
                     </div>
                   </li>
                 </ul>

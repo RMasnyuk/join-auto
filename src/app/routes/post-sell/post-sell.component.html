@@ -57,30 +57,17 @@
                   <ng-autocomplete
                     formControlName="model"
                     placeHolder="Модель авто"
-                    [data]="[1,2,3]"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="modelTemplate"
-                    [notFoundTemplate]="notFoundModelTemplate">
+                  >
                   </ng-autocomplete>
 
-                  <ng-template #modelTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
                 </div>
 
                 <div class="select-wrapper">
                   <ng-autocomplete
                     formControlName="year"
                     placeHolder="Рік випуску"
-                    [data]="[1,2,3]"
-                    [searchKeyword]="keywords"
-                    [itemTemplate]="yearTemplate"
-                    [notFoundTemplate]="notFoundYearTemplate">
+                    >
                   </ng-autocomplete>
-
-                  <ng-template #yearTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                  </ng-template>
                 </div>
 
                 <div class="select-wrapper">

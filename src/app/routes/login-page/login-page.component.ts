@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
   public form: FormGroup;
-  public serverErrors = {};
+  public serverErrors: any = {};
 
   constructor(private authService: AuthService, private router: Router) {
   }
