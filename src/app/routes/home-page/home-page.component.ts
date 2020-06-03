@@ -9,7 +9,7 @@ import {VehiclesService} from '../../services/vehicles.service';
 })
 export class HomePageComponent implements OnInit {
   public keywords = 'name';
-  private form: FormGroup;
+  public form: FormGroup;
   public isCollapsed = false;
   productsList: any = [];
   typeData = [

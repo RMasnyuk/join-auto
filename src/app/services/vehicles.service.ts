@@ -56,4 +56,16 @@ export class VehiclesService {
   createOrderApplication(body) {
     return this.http.post(`${this.baseUrl}/order/application`, body);
   }
+
+  getOrderList() {
+    return this.http.get(`${this.baseUrl}/order/list`);
+  }
+
+  approveOrderApplication(body) {
+    return this.http.post(`${this.baseUrl}/order/application/approve`, body);
+  }
+
+  declineOrderApplication(body) {
+    return this.http.post(`${this.baseUrl}/order/application/decline`, body);
+  }
 }

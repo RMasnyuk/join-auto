@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class SignUpComponent implements OnInit {
   public form: FormGroup;
   public isLoaded = true;
-  public serverErrors = {};
+  public serverErrors: any = {};
 
   constructor(private authService: AuthService, private router: Router) {
   }

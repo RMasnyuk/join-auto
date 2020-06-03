@@ -14,9 +14,9 @@ export class OrderListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.vehiclesService.getOrders().subscribe(res => {
-    //   this.orderList = res;
-    //   console.log(res)
-    // });
+   this.vehiclesService.getOrderList().subscribe((res: any) => {
+    this.orderList = res.items;
+    console.log(res)
+   })
   }
 }

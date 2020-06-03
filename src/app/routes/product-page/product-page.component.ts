@@ -13,9 +13,9 @@ import {AuthService} from '../../services/auth.service';
 })
 export class ProductPageComponent implements OnInit {
   private productId = this.activatedRoute.snapshot.params.id;
-  public productData = {};
-  public userInfo = {};
-  public buyRequests = [];
+  public productData: any = {};
+  public userInfo: any = {};
+  public buyRequests: any = [];
   public isLoggedIn = false;
   public showForm = true;
   public showApproveButton = false;
@@ -92,6 +92,8 @@ export class ProductPageComponent implements OnInit {
     this.vehiclesService.declineRequest({
       product_id: this.productId,
       request_id: requestId
-    }).subscribe();
+    }).subscribe(() => {
+      this.getData()
+    });
   }
 }
