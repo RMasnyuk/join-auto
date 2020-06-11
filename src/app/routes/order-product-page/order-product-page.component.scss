@@ -254,3 +254,26 @@ section {
 .input-default {
   background-color: #f7f7f7;
 }
+
+.execution {
+  font-size: 22px;
+  color: var(--green);
+  text-align: center;
+}
+
+.isCompletedText {
+  font-size: 18px;
+  margin-top: 20px;
+
+  .isCompletedBtn {
+    background-color: var(--green);
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    font-size: 16px;
+
+    &:hover {
+    transform: scale(1.2);
+      transition: 0.2s all;
+    }
+  }
+}

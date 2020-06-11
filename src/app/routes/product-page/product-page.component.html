@@ -1,5 +1,12 @@
 <section>
   <div class="container">
+    <div *ngIf="showForm && availableForPromote && !isProductShared && !isSold" class="row">
+      <div class="col-12">
+        <p class="add-product-text">Додати авто в список ваших товарів? <button class="add-btn" (click)="addToOwnList()">+ Додати</button></p>
+        <p class="add-product-hint">У випадку продажу авто через вашу сторінку, ви отримаєте винагороду від продавця у
+          розмірі <span class="compensation-text">{{productData.promote_compensation_type}}$</span></p>
+      </div>
+    </div>
     <div class="row">
       <div class="col-12">
         <div class="row mt-lg-4">
@@ -17,7 +24,8 @@
                     </div>
                     <div class="author-name-wrapper">
                       <p class="subtitle">Продавець</p>
-                      <p class="author-name text-capitalize">{{userInfo.user_name}}</p>
+                      <a *ngIf="userInfo._id !== authService.userId" [routerLink]="['/user-profile', userInfo._id]" class="author-name text-capitalize">{{userInfo.user_name}}</a>
+                      <a *ngIf="userInfo._id === authService.userId && userInfo._id" [routerLink]="['/user-profile']" class="author-name text-capitalize">{{userInfo.user_name}}</a>
                       <ngb-rating *ngIf="userInfo.can_rate" class="rating" [rate]="2" [readonly]="true"
                                   [max]="5"></ngb-rating>
                     </div>
@@ -55,7 +63,8 @@
           <div class="col-lg-4 order-2 order-lg-3">
             <div class="shadow-box">
               <div class="description">
-                <h2 class="small-title text-capitalize">{{productData.brand}} {{productData.model}} {{productData.year}}</h2>
+                <h2
+                  class="small-title text-capitalize">{{productData.brand}} {{productData.model}} {{productData.year}}</h2>
                 <p class="main-info text-capitalize">{{constantsService.BODY_TYPE[productData.body_type]}}</p>
                 <!--              description-->
                 <div class="description-main">
@@ -128,7 +137,8 @@
                 <div class="description-block">
                   <h2 class="title">Зробити пропозицію</h2>
                   <div class="input-wrapper mt-3">
-                    <input class="input-default textarea" type="number" placeholder="Додайте ціну, $" formControlName="price">
+                    <input class="input-default textarea" type="number" placeholder="Додайте ціну, $"
+                           formControlName="price">
                   </div>
 
                   <div class="input-wrapper mt-3">
@@ -155,7 +165,7 @@
                         <div class="img-wrapper">
                           <svg-icon src="../../../assets/images/user.svg"></svg-icon>
                         </div>
-                        <p class="name">{{offer.user_name}}</p>
+                        <a [routerLink]="['/user-profile', offer.user_id]" class="name">{{offer.user_name}}</a>
                       </div>
                       <p class="gray-text">Сума: <span class="green-text">{{offer.price}}$</span></p>
                       <p class="gray-text">Коментарій: <span class="dark-text text-capitalize">{{offer.comment}}</span>
@@ -166,7 +176,8 @@
                 </ul>
               </div>
             </div>
-            <p *ngIf="isSold" class="sold text-center">Автомобіль продано!</p>
+            <p *ngIf="!isSoldWith && isSold" class="sold text-center">Автомобіль продано!</p>
+            <p *ngIf="isSoldWith && isSold" class="sold text-center">Автомобіль продано за допомогою користувача <a class="link" [routerLink]="['/user-profile', isSoldWith]">{{soldWithUserName}}</a>!</p>
           </div>
         </div>
       </div>

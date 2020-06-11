@@ -19,7 +19,7 @@
                     <div class="author-name-wrapper">
                       <p class="subtitle">Замовник</p>
                       <p class="author-name">{{orderData.user_owner.user_name}}</p>
-                      <ngb-rating class="rating" [rate]="2" [readonly]="true" [max]="5"></ngb-rating>
+<!--                      <ngb-rating class="rating" [rate]="2" [readonly]="true" [max]="5"></ngb-rating>-->
                     </div>
                   </div>
                   <p class="user-options">
@@ -45,8 +45,15 @@
             <h1 class="title mt-2">{{orderData.year_from}} - {{orderData.year_to}}</h1>
             <h2 class="price">{{orderData.price_from}} $ - {{orderData.price_to}} $</h2>
           </div>
-          <div class="col-lg-6 order-2 order-lg-3 d-flex align-items-end">
-            <div class="shadow-box mt-0 w-100">
+          <div class="col-lg-6 order-2 order-lg-3 d-flex flex-column justify-content-end">
+            <div *ngIf="isOrderDone" class="isCompletedBlock">
+              <p class="execution">Замовлення виконано!</p>
+            </div>
+            <div *ngIf="orderData.selected_application && !isOrderDone" class="isCompletedBlock">
+            <p class="execution">Замовлення виконується...</p>
+            <p *ngIf="!showForm" class="isCompletedText text-center">Замовлення виконано? <button class="isCompletedBtn" (click)="makeOrderDone()">так</button></p>
+            </div>
+            <div class="shadow-box mt-4 w-100">
               <div class="description">
                 <h2 class="small-title">{{orderData.title}} {{orderData.model}}</h2>
                 <p class="main-info text-capitalize">{{constantsService.BODY_TYPE[orderData.body_type]}}</p>
@@ -146,7 +153,7 @@
                   <li *ngFor="let application of applicationsList" class="offer">
                     <div class="shadow-box background" [ngClass]="{'approved-application': application.approved}">
                       <div
-                        *ngIf="!showApproveButton && application.approved === null"
+                        *ngIf="!showApproveButton && application.approved === null && !orderData.selected_application"
                         class="approve-wrapper">
                         <button class="btn approve-btn" (click)="approveApplication(application._id)">Погодитися
                         </button>
@@ -158,7 +165,7 @@
                         <div class="img-wrapper">
                           <svg-icon src="../../../assets/images/user.svg"></svg-icon>
                         </div>
-                        <p class="name">{{application.applicant_name}}</p>
+                        <a [routerLink]="['/user-profile', application.applicant_id]" class="name">{{application.applicant_name}}</a>
                       </div>
                       <p class="gray-text">Сума: <span class="green-text">{{application.price}} $</span></p>
                       <p class="gray-text">Коментарій: <span class="dark-text">{{application.message}}</span></p>

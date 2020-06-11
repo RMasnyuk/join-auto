@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuth = false;
+  public userName = null;
   public isScrolledBottom = false;
   public scrolledPixels = 0;
   public actions = [
@@ -49,6 +50,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.addScroll = this.addScroll.bind(this);
     window.addEventListener('scroll', this.addScroll);
     this.isAuth = this.authService.isAuthenticated();
+
+    if(this.authService.isAuthenticated()) {
+      this.authService.getOwnProfileInfo().subscribe((res: any) => {
+        this.authService.setCredentials(res._id, res.user_name);
+        this.userName = res.user_name;
+      });
+    }
   }
 
   ngOnDestroy(): void {

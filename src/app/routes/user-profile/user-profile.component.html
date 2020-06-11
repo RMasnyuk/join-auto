@@ -15,19 +15,19 @@
           <p class="user-options">
             <svg-icon src="../../../assets/images/user.svg"></svg-icon>
             <span class="font-big">
-              {{data.name}}
+               {{data.user_name}}
             </span>
           </p>
           <p class="user-options">
             <svg-icon src="../../../assets/images/mail.svg"></svg-icon>
             <a href="mailto: {{'joinauto2020@gmail.com'}}" title="{{'joinauto2020@gmail.com'}}">
-                {{data.email}}
+              {{data.email}}
             </a>
           </p>
           <p class="user-options">
             <svg-icon src="../../../assets/images/phone.svg"></svg-icon>
             <a href="tel: {{'+38 098 22 45 697'}}" title="{{'+38 098 22 45 697'}}">
-                {{data.phoneNumber}}
+                {{data.phone_number}}
             </a>
           </p>
           <p class="user-options">
@@ -49,10 +49,13 @@
         </h2>
         <div class="products-wrapper">
           <div class="row">
-            <div *ngFor="let product of [1,2]" class="col-lg-3 mb-4 products-container">
-              <app-product-card></app-product-card>
+            <div *ngFor="let product of productList" class="col-lg-3 mb-4 products-container">
+              <app-product-card [vehicleData]="product" [referalTokenParam]="referalToken"></app-product-card>
             </div>
           </div>
+        </div>
+        <div *ngIf="!productList.length" class="products-wrapper mt-4 mb-4">
+          <p>У цього користувача ще немає товарів</p>
         </div>
       </div>
     </div>

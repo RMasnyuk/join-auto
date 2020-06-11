@@ -15,8 +15,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     if(this.authService.isAuthenticated()) {
       this.authService.getOwnProfileInfo().subscribe((res: any) => {
-        this.authService.setCredentials(res._id);
-      })
+        this.authService.setCredentials(res._id, res.user_name);
+      });
     }
   }
 }

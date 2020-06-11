@@ -12,6 +12,7 @@ export class HomePageComponent implements OnInit {
   public form: FormGroup;
   public isCollapsed = false;
   productsList: any = [];
+  orderList: any = [];
   typeData = [
     {
       id: 1,
@@ -89,8 +90,12 @@ export class HomePageComponent implements OnInit {
     });
 
     this.vehiclesService.getVehicles().subscribe( (res: any) => {
-      this.productsList = res.items.slice(0, 6);
+      this.productsList = res.items.slice(0, 8);
       console.log(this.productsList);
+    });
+
+    this.vehiclesService.getOrderList().subscribe((res: any) => {
+      this.orderList = res.items.slice(0, 8);
     });
   }
 

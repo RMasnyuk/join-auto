@@ -62,7 +62,10 @@
       margin-right: 10px;
       background-color: transparent;
       outline: none;
-      border: none;
+      border: 2px solid #ffffff;
+      border-radius: 5px;
+      padding: 2px 5px;
+      margin-left: 15px;
     }
   }
 
@@ -140,6 +143,8 @@
         .login {
           margin-top: 5px;
           color: var(--dark);
+          background: transparent;
+          border: 1px solid var(--dark);
         }
       }
 
@@ -215,4 +220,12 @@
       }
     }
   }
+}
+
+.user-name {
+  color: #ffffff;
+}
+
+.user-name-mobile {
+  color: var(--dark);
 }

@@ -8,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ProductCardComponent implements OnInit {
   @Input() showHot: boolean;
   @Input() vehicleData;
+  @Input() referalTokenParam;
 
   constructor() {
   }

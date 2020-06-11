@@ -2,6 +2,7 @@
   text-decoration: none;
   color: inherit;
   display: block;
+  height: 100%;
 }
 
 .product-wrapper {
@@ -10,6 +11,7 @@
   border-radius: 5px;
   cursor: pointer;
   padding: 10px;
+  height: 100%;
 
   &:hover {
     transform: scale(1.02);
@@ -53,7 +55,7 @@
 
   .name {
     font-weight: 700;
-    padding: 10px 10px 0;
+    padding: 10px 10px 10px;
     color: var(--dark);
     text-transform: capitalize;
   }
@@ -61,26 +63,27 @@
   .info {
     color: var(--green);
     font-weight: 700;
-    padding: 5px 10px 15px;
-
-    .mileage {
-      color: var(--dark);
-      font-weight: 600;
-      font-size: 14px;
-      position: relative;
-      margin-left: 10px;
-
-      &:after {
-        content: '';
-        position: absolute;
-        left: -10px;
-        top: 40%;
-        display: block;
-        height: 3px;
-        width: 3px;
-        background-color: var(--dark);
-
-      }
-    }
+    padding: 5px 10px 10px;
   }
+}
+
+.mileage {
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 14px;
+  position: relative;
+  margin-left: 10px;
+}
+
+.order {
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
+  background-color: var(--dark-green);
+}
+
+.info-text {
+  color: var(--dark-green);
+  font-size: 16px;
+  font-weight: 700;
 }

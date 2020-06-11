@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,9 @@ export class VehiclesService {
     return this.http.post(this.postOrderUrl, body);
   }
 
-  getVehicleData(id) {
-    return this.http.get(`${this.productsUrl}/${id}`);
+  getVehicleData(id, param) {
+    const opts = { params: new HttpParams({fromString: `q=${param}`})};
+    return this.http.get(`${this.productsUrl}/${id}`, opts);
   }
 
   getUserInfo(id) {
@@ -58,7 +59,7 @@ export class VehiclesService {
   }
 
   getOrderList() {
-    return this.http.get(`${this.baseUrl}/order/list`);
+    return this.http.get(`${this.baseUrl}/order/list?order=-1`);
   }
 
   approveOrderApplication(body) {
@@ -67,5 +68,29 @@ export class VehiclesService {
 
   declineOrderApplication(body) {
     return this.http.post(`${this.baseUrl}/order/application/decline`, body);
+  }
+
+  makeOrderDone(body) {
+    return this.http.put(`${this.baseUrl}/order/complete`, body);
+  }
+
+  getUserProducts() {
+    return this.http.get(`${this.baseUrl}/user/products/own`);
+  }
+
+  getUserSharedProducts() {
+    return this.http.get(`${this.baseUrl}/user/products/shared`);
+  }
+
+  addProductToOwnList(body) {
+    return this.http.post(`${this.baseUrl}/product/add`, body);
+  }
+
+  removeProductToOwnList(id) {
+    return this.http.delete(`${this.baseUrl}/product/${id}`);
+  }
+
+  getUserAllProducts(id) {
+    return this.http.get(`${this.baseUrl}/user/products/${id}`);
   }
 }

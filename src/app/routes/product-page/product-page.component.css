@@ -154,9 +154,35 @@ section {
   color: #ff2d42;
   font-size: 18px;
   margin-top: 20px; }
+  .sold .link {
+    color: var(--green); }
 
 .declined {
   color: #ff2d42;
   text-align: end; }
+
+.add-product-text {
+  color: var(--dark-green);
+  font-size: 18px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.add-product-hint {
+  color: var(--dark);
+  font-size: 14px; }
+
+.compensation-text {
+  color: var(--green);
+  font-size: 16px; }
+
+.add-btn {
+  color: #ffffff;
+  background-color: var(--green);
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  height: 30px; }
 
 /*# sourceMappingURL=product-page.component.css.map */

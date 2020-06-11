@@ -108,6 +108,7 @@ body {
     &.active .page-link {
       background-color: var(--rose);
       border-color: var(--rose);
+
       &:hover {
         color: #ffffff;
       }
@@ -137,5 +138,41 @@ body {
     border-bottom: 2px solid var(--dark-green);
     box-shadow: 0 2px 13px 3px rgba(0, 0, 0, 0.07);
     transition: all 0.1s ease;
+  }
+}
+
+.modal-exit-btn-wrapper {
+  padding: 10px 10px;
+}
+.modal-wrapper {
+  padding: 10px 40px 30px;
+
+  .text {
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--dark-green);
+    margin-top: 30px;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+    .button {
+      background-color: transparent;
+      color: var(--dark-green);
+      border: 2px solid var(--dark-green);
+      outline: none !important;
+    }
+  }
+}
+
+button  {
+  outline: none;
+
+  &:hover, &:active, &:focus {
+    outline: none !important;
   }
 }

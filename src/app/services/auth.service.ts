@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 export class AuthService {
   public baseUrl = 'https://join-auto.herokuapp.com/v1';
   public userId = null;
+  public userName = null;
 
   constructor(private http: HttpClient) {
   }
@@ -27,8 +28,9 @@ export class AuthService {
     localStorage.clear();
   }
 
-  setCredentials(id) {
+  setCredentials(id, name) {
     this.userId = id;
+    this.userName = name;
   }
 
   getUserId() {

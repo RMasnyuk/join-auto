@@ -86,14 +86,16 @@ export class PostSellComponent implements OnInit {
       formData.append('price', this.form.get('price').value);
       formData.append('is_new', this.form.get('isNew').value);
       formData.append('available_for_promote', this.form.get('allowPromote').value);
-      formData.append('promote_compensation_type', this.form.get('compensation').value);
+      if (this.form.get('compensation').value && this.form.get('allowPromote').value === 1) {
+        formData.append('promote_compensation_type', this.form.get('compensation').value);
+      }
       formData.append('body_type', this.form.get('bodyType').value);
       formData.append('mileage', this.form.get('mileage').value);
       formData.append('engine', this.form.get('engine').value);
       formData.append('transmittion', this.form.get('transmittion').value);
       formData.append('wheel_drive', this.form.get('wheelDrive').value);
       formData.append('color', this.form.get('color').value);
-      formData.append('brand', this.form.get('name').value.name);
+      formData.append('brand', this.form.get('name').value.name ? this.form.get('name').value.name : this.form.get('name').value);
       formData.append('model', this.form.get('model').value);
       formData.append('year', this.form.get('year').value);
 
@@ -113,7 +115,7 @@ export class PostSellComponent implements OnInit {
         // images: this.photosList,
         // brand: this.form.get('name').value.name,
         // model: this.form.get('model').value,
-      ).subscribe(res => this.router.navigate(['/vehicle-list']));
+      ).subscribe((res: any) => this.router.navigate(['/product-page', res._id]));
     } else {
       this.validForm = false;
     }

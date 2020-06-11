@@ -1,0 +1,11 @@
+<div class="modal-exit-btn-wrapper">
+<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-wrapper">
+  <p class="text">Ви додали цей автомобіль у список поширених товарів!</p>
+  <div class="button-wrapper">
+    <a routerLink="/user-profile" class="button" (click)="activeModal.dismiss()">Переглянути</a>
+  </div>
+</div>

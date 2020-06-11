@@ -1,0 +1,53 @@
+.section {
+  padding: 50px 0; }
+  .section .image-container {
+    display: flex;
+    justify-content: center; }
+    .section .image-container .image-wrapper {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #043136;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .section .image-container .image-wrapper .photo {
+        color: #ffffff; }
+        .section .image-container .image-wrapper .photo ::ng-deep svg {
+          width: 40px;
+          height: 40px; }
+  .section .user-info-wrapper {
+    margin-top: 40px; }
+    .section .user-info-wrapper .user-options {
+      margin-bottom: 15px;
+      color: var(--dark-green);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-size: 18px; }
+      .section .user-info-wrapper .user-options a {
+        display: inline-block;
+        color: var(--dark-green);
+        padding-left: 10px; }
+      .section .user-info-wrapper .user-options .font-big {
+        font-size: 28px;
+        font-weight: 700; }
+
+.color-section {
+  background-color: #eceef0; }
+  .color-section .header {
+    margin-top: 50px;
+    font-size: 32px;
+    font-weight: 400;
+    padding-left: 15px;
+    color: var(--dark); }
+  .color-section .products-container {
+    padding-top: 20px; }
+  .color-section .products-wrapper {
+    margin-top: 40px; }
+    .color-section .products-wrapper .link {
+      color: var(--dark-green); }
+
+/*# sourceMappingURL=user-own-profile.component.css.map */

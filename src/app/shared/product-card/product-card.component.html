@@ -1,4 +1,4 @@
-<a [routerLink]="['/product-page', vehicleData._id]" class="product">
+<a [routerLink]="['/product-page', vehicleData._id]" [queryParams]="{q: referalTokenParam}" class="product">
 <div class="product-wrapper">
   <div class="img-wrapper" [ngClass]="{'show-hot': showHot}">
     <span class="image-background" [ngStyle]="{'background-image': 'url('+vehicleData.images[0]+')'}">

@@ -23,7 +23,10 @@ const routes: Routes = [
         loadChildren: () => import('./routes/order-list/order-list.module').then(m => m.OrderListModule)
       },
       {
-        path: 'user-profile', loadChildren: () => import('./routes/user-profile/user-profile.module').then(m => m.UserProfileModule)
+        path: 'user-profile/:id', loadChildren: () => import('./routes/user-profile/user-profile.module').then(m => m.UserProfileModule)
+      },
+      {
+        path: 'user-profile', loadChildren: () => import('./routes/user-own-profile/user-own-profile.module').then(m => m.UserOwnProfileModule)
       }
     ]
   },

@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
         .subscribe( (res: any) => {
           localStorage.setItem('user_token', res.auth_token);
           this.authService.getOwnProfileInfo().subscribe((response: any) => {
-            this.authService.setCredentials(response._id);
+            this.authService.setCredentials(response._id, response.user_name);
           })
           this.router.navigate(['/']);
         }, error => {

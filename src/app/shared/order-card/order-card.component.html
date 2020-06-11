@@ -1,7 +1,9 @@
 <a [routerLink]="['/order-page', orderData._id]" class="product">
   <div class="product-wrapper">
-    <p class="name">{{orderData.title}} {{orderData.model}}</p>
-    <p class="name">{{orderData.year_from}} - {{orderData.year_to}}</p>
-    <p class="info">{{orderData.price_from}}$ - {{orderData.price_to}}$ <span class="mileage">~{{orderData.mileage}} км</span></p>
+    <p class="order">Замовлення:</p>
+    <p class="name"><span class="info-text">Марка:</span> {{orderData.title}} {{orderData.model}}</p>
+    <p class="name"><span class="info-text">Рік:</span> {{orderData.year_from}} - {{orderData.year_to}}</p>
+    <p class="info"><span class="info-text">Ціна:</span> {{orderData.price_from}}$ - {{orderData.price_to}}$</p>
+    <p class="name"><span class="info-text">Пробіг</span>: ~{{orderData.mileage}} км</p>
   </div>
 </a>

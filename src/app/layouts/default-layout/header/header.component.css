@@ -43,7 +43,10 @@
       margin-right: 10px;
       background-color: transparent;
       outline: none;
-      border: none; }
+      border: 2px solid #ffffff;
+      border-radius: 5px;
+      padding: 2px 5px;
+      margin-left: 15px; }
   .header .side-menu-btn {
     line-height: 0; }
     .header .side-menu-btn .menu-btn {
@@ -96,7 +99,9 @@
         align-items: center; }
         .mobile-list .action-wrapper .login-wrapper-mobile span .login {
           margin-top: 5px;
-          color: var(--dark); }
+          color: var(--dark);
+          background: transparent;
+          border: 1px solid var(--dark); }
 
 .menu-btn {
   width: 25px;
@@ -138,5 +143,11 @@
     border-radius: 2px;
     transform: translateY(-50%) rotate(-45deg);
     top: 50%; }
+
+.user-name {
+  color: #ffffff; }
+
+.user-name-mobile {
+  color: var(--dark); }
 
 /*# sourceMappingURL=header.component.css.map */

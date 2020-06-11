@@ -4,6 +4,10 @@ import {VehiclesService} from '../../services/vehicles.service';
 import {ConstantsService} from '../../services/constants.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ApproveRequestOrderSuccessComponent} from '../../modals/approve-request-order-success/approve-request-order-success.component';
+import {AddRequestOrderSuccessComponent} from '../../modals/add-request-order-success/add-request-order-success.component';
+import {AddRequestFailedComponent} from '../../modals/add-request-failed/add-request-failed.component';
 
 @Component({
   selector: 'app-order-product-page',
@@ -18,13 +22,15 @@ export class OrderProductPageComponent implements OnInit {
   public showForm = true;
   public applicationsList = [];
   public showApproveButton = false;
+  public isOrderDone = false;
   applicationForm: FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private vehiclesService: VehiclesService,
     public constantsService: ConstantsService,
-    private authService: AuthService
+    private authService: AuthService,
+    private modal: NgbModal
   ) {
   }
 
@@ -34,6 +40,10 @@ export class OrderProductPageComponent implements OnInit {
       this.orderData = res;
       this.showForm = res.user_owner._id !== this.authService.getUserId();
       this.showApproveButton = res.user_owner._id !== this.authService.userId;
+      this.isOrderDone = res.is_done;
+      // if(res.is_done) {
+      //   alert('this order is done')
+      // }
       this.vehiclesService.getOrderApplications(res._id).subscribe((response: any) => {
         this.applicationsList = response.applications;
         console.log(this.applicationsList);
@@ -60,7 +70,9 @@ export class OrderProductPageComponent implements OnInit {
       }).subscribe((res) => {
         this.applicationForm.reset();
         this.getData();
-        console.log(res)
+        this.modal.open(AddRequestOrderSuccessComponent, {centered: true});
+      }, rej => {
+        this.modal.open(AddRequestFailedComponent, {centered: true});
       });
     } else {
       console.log(this.applicationForm.valid);
@@ -73,6 +85,7 @@ export class OrderProductPageComponent implements OnInit {
       application_id: id
     }).subscribe(() => {
       this.getData();
+      this.modal.open(ApproveRequestOrderSuccessComponent, {centered: true});
     });
 }
 
@@ -82,5 +95,13 @@ declineApplication(id) {
   }).subscribe(() => {
     this.getData();
   });
+}
+
+makeOrderDone() {
+    this.vehiclesService.makeOrderDone({
+      order_id: this.orderId
+    }).subscribe(res => {
+      this.isOrderDone = true;
+    });
 }
 }

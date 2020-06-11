@@ -52,7 +52,7 @@ export class PostOrderComponent implements OnInit {
   submit() {
     if (this.form.valid) {
       this.vehiclesService.postOrder({
-        title: this.form.get('name').value.name,
+        title: this.form.get('name').value.name ? this.form.get('name').value.name : this.form.get('name').value,
         description: this.form.get('description').value,
         price_from: this.form.get('priceFrom').value,
         price_to: this.form.get('priceTo').value,
